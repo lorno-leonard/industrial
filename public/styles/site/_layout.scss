@@ -1,16 +1,96 @@
+html, body {
+	height: 100%;
+}
+
+ol {
+  list-style-type: none;
+  counter-reset: item;
+  margin: 0;
+  padding: 0;
+
+	& > li {
+		display: table;
+		counter-increment: item;
+		margin-bottom: 0.6em;
+
+		&:before {
+			content: counters(item, ".1.") ". ";
+			display: table-cell;
+			padding-right: 0.6em;
+		}
+
+		ol > li {
+			margin: 0;
+
+			&:before {
+				content: counters(item, ".1.") " ";
+			}
+		}
+	}
+}
+
+ol.icpe_disclaimer {
+  list-style-type: none;
+  counter-reset: item;
+  margin: 0;
+  padding: 0;
+
+	& > li {
+		display: table;
+		counter-increment: item;
+		margin-bottom: 0.6em;
+
+		&:before {
+			content: "1.1." counter(item) " ";
+			display: table-cell;
+			padding-right: 0.6em;
+		}
+	}
+}
+
+#wrapper {
+	min-height: 100%;
+	height: auto !important;
+	margin: 0 auto -90px;
+}
+
 #header {
-	margin-top: 30px;
+	margin-top: 10px;
 }
 
 #footer {
+	background: #fff;
+	border-top: 1px solid #eee;
 	margin-top: 30px;
-	border-top: 1px solid #eeeeee;
-	padding-top: 30px;
-	color: #777777;
+	padding: 15px 0;
+
+	ul.list-inline {
+		margin-bottom: 0;
+	}
+}
+
+#push {
+    height: 90px;
 }
 
 .gallery-image img{
     display: block;
     max-width: 100%;
     height: auto;
+}
+
+.icpe_logo {
+	height: 60px;
+
+	@media (min-width: $screen-sm) {
+		height: 96px;
+	}
+
+	@media (min-width: $screen-md) {
+		height: 124px;
+	}
+
+	@media (min-width: $screen-lg) {
+		height: 150px;
+	}
 }
