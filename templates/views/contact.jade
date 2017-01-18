@@ -10,16 +10,19 @@ block content
 			h3 Thanks for getting in touch.
 		else
 			.row: .col-sm-8.col-md-6
+				p If you have questions that you would like to ask, simply fill out the form below and click submit.
+				p We aim to respond to you ASAP. If you would like to speak to us over the phone, please call 00441332496117 Monday - Friday 9am - 5pm.
+				p Alternatively, you can email <a href='mailto:sales@industrialprocesscontrol.co.uk' target='_blank'>sales@industrialprocesscontrol.co.uk</a>
 				form(method='post')
 					input(type='hidden', name='action', value='contact')
 					.form-group(class=validationErrors.name ? 'has-error' : null)
 						label Name
 						input(type='text', name='name.full', value=formData['name.full']).form-control
 					.form-group(class=validationErrors.email ? 'has-error' : null)
-						label Email
+						label Email Address
 						input(type='email', name='email', value=formData.email).form-control
 					.form-group
-						label Phone
+						label Phone Number
 						input(type='text', name='phone', value=formData.phone, placeholder='(optional)').form-control
 					.form-group(class=validationErrors.enquiryType ? 'has-error' : null)
 						label What are you contacting us about?
