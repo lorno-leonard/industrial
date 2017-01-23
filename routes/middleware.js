@@ -9,7 +9,7 @@
  */
 var _ = require('lodash');
 var keystone = require('keystone');
-var ProductCategories = keystone.list('ProductCategories');
+var ProductCategory = keystone.list('ProductCategory');
 
 
 /**
@@ -45,15 +45,17 @@ exports.initLocals = function (req, res, next) {
 	res.locals.user = req.user;
 
 	// Product Categories
-	ProductCategories.model.find().exec(function (err, results) {
-		if (err || !results.length) {
-			return next(err);
-		}
+	ProductCategory.model.find()
+		.where('top', true)
+		.exec(function (err, results) {
+			if (err || !results.length) {
+				return next(err);
+			}
 
-		res.locals.productCategories = results;
-
-		next();
-	});
+			res.locals.productCategories = results;
+			console.log(res.locals);
+			next();
+		});
 };
 
 

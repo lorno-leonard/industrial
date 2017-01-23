@@ -77,8 +77,11 @@ html
 					.col-md-3
 						h4 Product Categories
 						ul.list-unstyled
-							each category in productCategories
-								li= category.name
+							if !productCategories
+								li No Category found
+							else
+								each category in productCategories
+									li= category.name
 						hr
 
 					//- Content
