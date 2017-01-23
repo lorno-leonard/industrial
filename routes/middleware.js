@@ -8,8 +8,10 @@
  * modules in your project's /lib directory.
  */
 var _ = require('lodash');
+var async = require('async');
 var keystone = require('keystone');
 var ProductCategory = keystone.list('ProductCategory');
+var Manufacturer = keystone.list('Manufacturer');
 
 
 /**
@@ -44,18 +46,39 @@ exports.initLocals = function (req, res, next) {
 	// User
 	res.locals.user = req.user;
 
-	// Product Categories
-	ProductCategory.model.find()
-		.where('top', true)
-		.exec(function (err, results) {
-			if (err || !results.length) {
-				return next(err);
-			}
+	async.series([
+		function (callback) {
+			// Product Categories
+			ProductCategory.model.find()
+				.where('top', true)
+				.exec(function (err, results) {
+					if (err || !results.length) {
+						return callback(err);
+					}
 
-			res.locals.productCategories = results;
-			console.log(res.locals);
-			next();
-		});
+					res.locals.productCategories = results;
+					callback();
+				});
+		},
+		function (callback) {
+			// Manufacturers
+			Manufacturer.model.find()
+				.where('top', true)
+				.exec(function (err, results) {
+					if (err || !results.length) {
+						return callback(err);
+					}
+
+					res.locals.manufacturers = results;
+					callback();
+				});
+		},
+	], function (err, results) {
+		if (err) {
+			next(err);
+		}
+		next();
+	});
 };
 
 

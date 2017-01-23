@@ -80,9 +80,16 @@ html
 							if !productCategories
 								li No Category found
 							else
-								each category in productCategories
-									li= category.name
+								each row in productCategories
+									li= row.name
 						hr
+						h4 Manufacturers
+						ul.list-unstyled
+							if !manufacturers
+								li No Manufacturer found
+							else
+								each row in manufacturers
+									li= row.name
 
 					//- Content
 					.col-md-6
