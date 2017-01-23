@@ -8,6 +8,8 @@
  * modules in your project's /lib directory.
  */
 var _ = require('lodash');
+var keystone = require('keystone');
+var ProductCategories = keystone.list('ProductCategories');
 
 
 /**
@@ -39,8 +41,19 @@ exports.initLocals = function (req, res, next) {
 		{ label: 'Contact Us', key: 'contact', href: '/contact' },
 	];
 
+	// User
 	res.locals.user = req.user;
-	next();
+
+	// Product Categories
+	ProductCategories.model.find().exec(function (err, results) {
+		if (err || !results.length) {
+			return next(err);
+		}
+
+		res.locals.productCategories = results;
+
+		next();
+	});
 };
 
 
