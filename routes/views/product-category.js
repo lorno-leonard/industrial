@@ -10,11 +10,11 @@ exports = module.exports = function (req, res) {
   // item in the header navigation.
   locals.section = 'products';
 
-  // Get all Product Categories
+  // Get Product Category based on slug
   ProductCategory.model.find()
     .sort('name')
     .exec(function (err, results) {
-      if (err || !results.length) {
+    if (err || !results.length) {
         locals.data = [];
         console.log(err);
       } else {
@@ -22,6 +22,7 @@ exports = module.exports = function (req, res) {
       }
 
       // Render the view
-      view.render('products');
+      view.render('product-category');
     });
 };
+

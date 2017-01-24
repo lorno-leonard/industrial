@@ -5932,6 +5932,12 @@ ol.icpe_disclaimer {
 .ipce_content {
   min-height: 500px; }
 
+.icpe_list li > a {
+  color: #333; }
+  .icpe_list li > a:hover {
+    color: #333;
+    text-decoration: underline; }
+
 .ipce_content_footer {
   margin-top: 30px;
   font-size: 0.85em; }

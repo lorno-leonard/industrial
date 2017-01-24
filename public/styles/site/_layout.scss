@@ -172,6 +172,17 @@ $ipce-color-red: #dc1433;
 	min-height: 500px;
 }
 
+.icpe_list {
+ li > a {
+	 color: #333;
+
+	 &:hover {
+		 color: #333;
+		 text-decoration: underline;
+	 }
+ }
+}
+
 .ipce_content_footer {
 	margin-top: 30px;
 	font-size: 0.85em;
