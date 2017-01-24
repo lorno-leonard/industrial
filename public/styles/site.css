@@ -5932,9 +5932,11 @@ ol.icpe_disclaimer {
 .ipce_content {
   min-height: 500px; }
 
-.icpe_list li > a {
+.icpe_list li > a,
+.icpe_list a.icpe_list_anchor {
   color: #333; }
-  .icpe_list li > a:hover {
+  .icpe_list li > a:hover,
+  .icpe_list a.icpe_list_anchor:hover {
     color: #333;
     text-decoration: underline; }
 

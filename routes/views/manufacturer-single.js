@@ -1,5 +1,5 @@
 var keystone = require('keystone');
-var ProductCategory = keystone.list('ProductCategory');
+var Manufacturer = keystone.list('Manufacturer');
 
 exports = module.exports = function (req, res) {
 
@@ -8,10 +8,10 @@ exports = module.exports = function (req, res) {
 
   // locals.section is used to set the currently selected
   // item in the header navigation.
-  locals.section = 'products';
+  locals.section = 'manufacturers';
 
-  // Get Product Category based on slug
-  ProductCategory.model.findOne()
+  // Get Manufacturer based on slug
+  Manufacturer.model.findOne()
     .where('slug', req.params.slug)
     .exec(function (err, results) {
       if (err || !results) {
@@ -21,7 +21,7 @@ exports = module.exports = function (req, res) {
       }
 
       // Render the view
-      view.render('product-category');
+      view.render('manufacturer-single');
     });
 };
 

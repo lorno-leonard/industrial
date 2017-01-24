@@ -43,8 +43,9 @@ exports = module.exports = function (app) {
   app.get('/about', routes.views.about);
   app.get('/products', routes.views.products);
   app.get('/products/category', routes.views.products);
-  app.get('/products/category/:category', routes.views['product-category']);
+  app.get('/products/category/:slug', routes.views['product-category']);
   app.get('/manufacturers', routes.views.manufacturers);
+	app.get('/manufacturers/:slug', routes.views['manufacturer-single']);
   app.get('/service', routes.views.service);
   app.get('/service/payments', routes.views.payments);
   app.get('/service/shipping', routes.views.shipping);

@@ -1,10 +1,10 @@
 extends ../layouts/default
 
 block intro
-  p: a(href='/products/category') &larr; back to the Product Categories
+  p: a(href='/manufacturers') &larr; back to the Manufacturers
   hr
   if !data
-    h3.text-danger Invalid Product Category
+    h3.text-danger Invalid Manufacturer
   else
     h3= data.name
     if !data.content

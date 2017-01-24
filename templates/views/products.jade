@@ -1,10 +1,10 @@
 extends ../layouts/default
 
 block intro
-  h3 Products
-  .row
+  h3 Product Categories
+  .row.icpe_list
     if !data
       .col-md-6 No Product Category found
     else
       each row in data
-        .col-md-6= row.name
+        .col-md-6: a.icpe_list_anchor(href='/products/category/' + row.slug)= row.name

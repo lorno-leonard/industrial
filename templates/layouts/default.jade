@@ -99,17 +99,17 @@ html
                 li No Category found
               else
                 each row in productCategories
-                  li: a(href='/products/category/' + row.slug, target='_blank')= row.name
+                  li: a(href='/products/category/' + row.slug)= row.name
                 br
                 a(href='/products') View all Product Categories
             hr
             h4 Top Manufacturers
-            ul.list-unstyled
+            ul.icpe_list.list-unstyled
               if !manufacturers
                 li No Manufacturer found
               else
                 each row in manufacturers
-                  li= row.name
+                  li: a(href='/manufacturers/' + row.slug)= row.name
                 br
                 a(href='/manufacturers') View all Manufacturers
 

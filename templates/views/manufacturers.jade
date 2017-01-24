@@ -2,9 +2,9 @@ extends ../layouts/default
 
 block intro
   h3 Manufacturers
-  .row
+  .row.icpe_list
     if !data
       .col-md-6 No Manufacturer found
     else
       each row in data
-        .col-md-6= row.name
+        .col-md-6: a.icpe_list_anchor(href='/manufacturers/' + row.slug)= row.name

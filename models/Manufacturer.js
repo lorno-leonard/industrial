@@ -6,13 +6,17 @@ var Types = keystone.Field.Types;
  * =============
  */
 
-var Manufacturer = new keystone.List('Manufacturer');
+var Manufacturer = new keystone.List('Manufacturer', {
+  map: { name: 'name' },
+  autokey: { path: 'slug', from: 'name', unique: true },
+});
 
 Manufacturer.add({
-	name: { type: Types.Text, required: true },
-	top: { type: Types.Boolean, default: false },
+  name: { type: Types.Text, required: true },
+  top: { type: Types.Boolean, default: false },
+  content: { type: Types.Html, wysiwyg: true, height: 400 },
 });
 
 Manufacturer.defaultSort = 'name';
-Manufacturer.defaultColumns = 'name, top';
+Manufacturer.defaultColumns = 'name, slug, top';
 Manufacturer.register();

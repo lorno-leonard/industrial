@@ -173,7 +173,8 @@ $ipce-color-red: #dc1433;
 }
 
 .icpe_list {
- li > a {
+ li > a,
+ a.icpe_list_anchor {
 	 color: #333;
 
 	 &:hover {
