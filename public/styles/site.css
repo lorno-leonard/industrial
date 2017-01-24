@@ -5868,7 +5868,7 @@ ol.icpe_disclaimer {
   background: #fff;
   border-top: 1px solid #eee;
   margin-top: 30px;
-  padding: 15px 0; }
+  padding: 5px 0; }
   #footer ul.list-inline {
     margin-bottom: 0; }
 
@@ -5883,6 +5883,9 @@ ol.icpe_disclaimer {
 @font-face {
   font-family: "Righteous";
   src: url("../fonts/Righteous.ttf") format("truetype"); }
+
+.text-ipce-red {
+  color: #dc1433; }
 
 .ipce_top_header .icpe_logo {
   height: 60px; }
@@ -5930,7 +5933,10 @@ ol.icpe_disclaimer {
   min-height: 500px; }
 
 .ipce_content_footer {
+  margin-top: 30px;
   font-size: 0.85em; }
+  .ipce_content_footer p {
+    margin-bottom: 5px; }
 
 ul.ipce_footer {
   text-align: justify;
@@ -5943,5 +5949,4 @@ ul.ipce_footer {
     display: inline-block; }
     ul.ipce_footer li a {
       font-weight: bold;
-      font-size: 0.85em;
       color: #333; }

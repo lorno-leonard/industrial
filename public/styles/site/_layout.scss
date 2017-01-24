@@ -62,7 +62,7 @@ ol.icpe_disclaimer {
 	background: #fff;
 	border-top: 1px solid #eee;
 	margin-top: 30px;
-	padding: 15px 0;
+	padding: 5px 0;
 
 	ul.list-inline {
 		margin-bottom: 0;
@@ -80,6 +80,7 @@ ol.icpe_disclaimer {
 }
 
 // Custom
+$ipce-color-red: #dc1433;
 @mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
 	$src: null;
 
@@ -109,6 +110,10 @@ ol.icpe_disclaimer {
 
 @include font-face('Righteous', '../fonts/Righteous', null, null, ttf);
 
+.text-ipce-red {
+	color: $ipce-color-red;
+}
+
 .ipce_top_header {
 	.icpe_logo {
 		height: 60px;
@@ -129,7 +134,7 @@ ol.icpe_disclaimer {
 	.ipce_banner {
 		font-family: 'Righteous';
 		font-size: 8px;
-		color: #dc1433;
+		color: $ipce-color-red;
 		width: 60%;
 		margin: 0 auto;
 		margin-top: 28px;
@@ -168,7 +173,12 @@ ol.icpe_disclaimer {
 }
 
 .ipce_content_footer {
+	margin-top: 30px;
 	font-size: 0.85em;
+	
+	p {
+		margin-bottom: 5px;
+	}
 }
 
 ul.ipce_footer {
@@ -186,7 +196,6 @@ ul.ipce_footer {
 
 		a {
 			font-weight: bold;
-			font-size: 0.85em;
 			color: #333;
 		}
 	}
