@@ -110,6 +110,22 @@ ol.icpe_disclaimer {
 @include font-face('Righteous', '../fonts/Righteous', null, null, ttf);
 
 .ipce_top_header {
+	.icpe_logo {
+		height: 60px;
+
+		@media (min-width: $screen-sm) {
+			height: 96px;
+		}
+
+		@media (min-width: $screen-md) {
+			height: 124px;
+		}
+
+		@media (min-width: $screen-lg) {
+			height: 150px;
+		}
+	}
+
 	.ipce_banner {
 		font-family: 'Righteous';
 		font-size: 8px;
@@ -147,20 +163,12 @@ ol.icpe_disclaimer {
 	}
 }
 
-.icpe_logo {
-	height: 60px;
+.ipce_content {
+	min-height: 500px;
+}
 
-	@media (min-width: $screen-sm) {
-		height: 96px;
-	}
-
-	@media (min-width: $screen-md) {
-		height: 124px;
-	}
-
-	@media (min-width: $screen-lg) {
-		height: 150px;
-	}
+.ipce_content_footer {
+	font-size: 0.85em;
 }
 
 ul.ipce_footer {
