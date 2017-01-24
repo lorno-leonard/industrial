@@ -41,8 +41,21 @@ html
 			//- HEADER
 			#header: .container
 
-				//- Logo
-				img.icpe_logo(src='/images/icpe-logo.png')
+				//- Top header
+				.row.ipce_top_header
+					.col-sm-12.col-md-4.text-center
+						//- Logo
+						img.icpe_logo(src='/images/icpe-logo.png')		
+					.col-md-4.hidden-sm
+						.ipce_banner.text-center Engineering Excellence Is Our Standard
+					.col-md-4.hidden-sm
+						.ipce_banner_number.text-center
+							div
+								span.glyphicon.glyphicon-earphone
+								span +44(0) 
+								strong 1332496117
+							div
+								small United Kingdom
 
 				//- Customise your site's navigation by changing the navLinks Array in ./routes/middleware.js
 				//- ... or completely change this header to suit your design.
@@ -61,13 +74,15 @@ html
 								each link in navLinks
 									li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
 							ul.nav.navbar-nav.navbar-right
-								if user
-									if user.canAccessKeystone
-										li: a(href='/keystone') Open Keystone
-									li: a(href='/keystone/signout') Sign Out
-								else
-									li: a(href='/keystone/signin') Sign In
-								li(class=(section == 'contact' ? 'active' : null)): a(href='/contact') Contact Us
+								each link in navRightLinks
+									li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
+								//- if user
+								//- 	if user.canAccessKeystone
+								//- 		li: a(href='/keystone') Open Keystone
+								//- 	li: a(href='/keystone/signout') Sign Out
+								//- else
+								//- 	li: a(href='/keystone/signin') Sign In
+								//- li(class=(section == 'contact' ? 'active' : null)): a(href='/contact') Contact Us
 
 			//- BODY
 			#body: .container
@@ -75,7 +90,7 @@ html
 				.row
 					//- Product/Manufacturer side
 					.col-md-3
-						h4 Product Categories
+						h4 Popular Product Categories
 						ul.list-unstyled
 							if !productCategories
 								li No Category found
@@ -83,7 +98,7 @@ html
 								each row in productCategories
 									li= row.name
 						hr
-						h4 Manufacturers
+						h4 Top Manufacturers
 						ul.list-unstyled
 							if !manufacturers
 								li No Manufacturer found
@@ -116,7 +131,7 @@ html
 		//- FOOTER
 		footer#footer
 			.container
-				ul.list-inline.center-block.text-center
+				ul.ipce_footer.list-inline.center-block.text-center
 					each link in bottomLinks
 						li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
 				

@@ -79,6 +79,74 @@ ol.icpe_disclaimer {
     height: auto;
 }
 
+// Custom
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+	$src: null;
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}
+
+@include font-face('Righteous', '../fonts/Righteous', null, null, ttf);
+
+.ipce_top_header {
+	.ipce_banner {
+		font-family: 'Righteous';
+		font-size: 8px;
+		color: #dc1433;
+		width: 60%;
+		margin: 0 auto;
+		margin-top: 28px;
+
+		@media (min-width: $screen-sm) {
+			font-size: 13px;
+			margin-top: 45px;
+		}
+
+		@media (min-width: $screen-md) {
+			font-size: 16px;
+			margin-top: 58px;
+		}
+
+		@media (min-width: $screen-lg) {
+			font-size: 20px;
+			margin-top: 70px;
+		}
+	}
+
+	.ipce_banner_number {
+		@media (min-width: $screen-md) {
+			font-size: 13px;
+			margin-top: 58px;
+		}
+
+		@media (min-width: $screen-lg) {
+			font-size: 16px;
+			margin-top: 70px;
+		}
+	}
+}
+
 .icpe_logo {
 	height: 60px;
 
@@ -92,5 +160,26 @@ ol.icpe_disclaimer {
 
 	@media (min-width: $screen-lg) {
 		height: 150px;
+	}
+}
+
+ul.ipce_footer {
+	text-align: justify;
+	width: 100%;
+
+	&:after {
+		content: '';
+    display: inline-block;
+    width: 100%;
+	}
+
+	li {
+		display: inline-block;
+
+		a {
+			font-weight: bold;
+			font-size: 0.85em;
+			color: #333;
+		}
 	}
 }

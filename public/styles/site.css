@@ -5880,6 +5880,40 @@ ol.icpe_disclaimer {
   max-width: 100%;
   height: auto; }
 
+@font-face {
+  font-family: "Righteous";
+  src: url("../fonts/Righteous.ttf") format("truetype"); }
+
+.ipce_top_header .ipce_banner {
+  font-family: 'Righteous';
+  font-size: 8px;
+  color: #dc1433;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 28px; }
+  @media (min-width: 768px) {
+    .ipce_top_header .ipce_banner {
+      font-size: 13px;
+      margin-top: 45px; } }
+  @media (min-width: 992px) {
+    .ipce_top_header .ipce_banner {
+      font-size: 16px;
+      margin-top: 58px; } }
+  @media (min-width: 1200px) {
+    .ipce_top_header .ipce_banner {
+      font-size: 20px;
+      margin-top: 70px; } }
+
+@media (min-width: 992px) {
+  .ipce_top_header .ipce_banner_number {
+    font-size: 13px;
+    margin-top: 58px; } }
+
+@media (min-width: 1200px) {
+  .ipce_top_header .ipce_banner_number {
+    font-size: 16px;
+    margin-top: 70px; } }
+
 .icpe_logo {
   height: 60px; }
   @media (min-width: 768px) {
@@ -5891,3 +5925,17 @@ ol.icpe_disclaimer {
   @media (min-width: 1200px) {
     .icpe_logo {
       height: 150px; } }
+
+ul.ipce_footer {
+  text-align: justify;
+  width: 100%; }
+  ul.ipce_footer:after {
+    content: '';
+    display: inline-block;
+    width: 100%; }
+  ul.ipce_footer li {
+    display: inline-block; }
+    ul.ipce_footer li a {
+      font-weight: bold;
+      font-size: 0.85em;
+      color: #333; }

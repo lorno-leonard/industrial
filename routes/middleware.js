@@ -30,7 +30,12 @@ exports.initLocals = function (req, res, next) {
 		{ label: 'About Us', key: 'about', href: '/about' },
 		{ label: 'Products', key: 'products', href: '/products' },
 		{ label: 'Manufacturers', key: 'manufacturers', href: '/manufacturers' },
-		{ label: 'Payments & Credit Accounts', key: 'payments', href: '/payments' },
+	];
+
+	res.locals.navRightLinks = [
+		{ label: 'Customer Service', key: 'service', href: '/service' },
+		{ label: 'Login/Register', key: '', href: '#' },
+		{ label: 'Contact Us', key: 'contact', href: '/contact' },
 	];
 
 	// Bottom links

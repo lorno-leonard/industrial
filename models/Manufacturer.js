@@ -10,7 +10,7 @@ var Manufacturer = new keystone.List('Manufacturer');
 
 Manufacturer.add({
 	name: { type: Types.Text, required: true },
-	top: { type: Types.Boolean, required: true, default: false },
+	top: { type: Types.Boolean, default: false },
 });
 
 Manufacturer.defaultSort = 'name';

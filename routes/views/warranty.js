@@ -10,5 +10,5 @@ exports = module.exports = function (req, res) {
 	locals.section = 'service';
 
 	// Render the view
-	view.render('payments');
+	view.render('warranty');
 };
