@@ -2,3 +2,9 @@ extends ../layouts/default
 
 block intro
   h3 Manufacturers
+  .row
+    if !data
+      .col-md-6 No Manufacturer found
+    else
+      each row in data
+        .col-md-6= row.name

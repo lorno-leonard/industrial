@@ -1,4 +1,5 @@
 var keystone = require('keystone');
+var ProductCategory = keystone.list('ProductCategory');
 
 exports = module.exports = function (req, res) {
 
@@ -9,6 +10,18 @@ exports = module.exports = function (req, res) {
 	// item in the header navigation.
 	locals.section = 'products';
 
-	// Render the view
-	view.render('products');
+	// Get all Manufacturers
+	ProductCategory.model.find()
+		.sort('name')
+		.exec(function (err, results) {
+			if (err || !results.length) {
+				locals.data = [];
+				console.log(err);
+			} else {
+				locals.data = results;
+			}
+
+			// Render the view
+			view.render('products');
+		});
 };
