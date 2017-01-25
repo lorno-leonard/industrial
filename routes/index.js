@@ -61,6 +61,8 @@ exports = module.exports = function (app) {
 
   // API
   app.post('/api/signin', routes.api.auth.signin);
+  app.get('/api/register/states/:country', routes.api.register.states);
+  app.post('/api/register', routes.api.register.register);
 
   // NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
   // app.get('/protected', middleware.requireUser, routes.views.protected);

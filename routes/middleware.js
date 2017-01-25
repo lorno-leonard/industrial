@@ -34,9 +34,9 @@ exports.initLocals = function (req, res, next) {
 
   res.locals.navRightLinks = [
     { label: 'Customer Service', key: 'service', href: '/service' },
+    { label: 'Contact Us', key: 'contact', href: '/contact' },
     { label: 'Register', key: 'register', href: '/register' },
     { label: 'Signout', key: 'signout', href: '/signout' },
-    { label: 'Contact Us', key: 'contact', href: '/contact' },
   ];
 
   // Bottom links

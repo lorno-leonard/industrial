@@ -1,4 +1,4 @@
-/* globals  $, _ */
+/* globals  $ */
 /* eslint no-unused-vars: 0 */
 
 // Login form
@@ -6,13 +6,13 @@ $('form#icpe_login_form').submit(function (e) {
   e.preventDefault();
 
   var _csrf = $(this).find('input[name="_csrf"]').val();
-  var username = $(this).find('input[name="username"]').val();
+  var username = $(this).find('input[name="username"]').val().trim();
   var password = $(this).find('input[name="password"]').val();
   var elButton = $(this).find('button');
   var elAlert = $(this).find('.alert');
 
-  // Rest error message
-  elAlert.addClass('hide').text('');
+  // Reset error message
+  elAlert.addClass('hide').empty();
 
   // Disable button
   elButton.prop('disabled', true);
@@ -23,9 +23,6 @@ $('form#icpe_login_form').submit(function (e) {
       password: password,
     }, function (response) {
       console.log(response);
-
-      // Enable button
-      elButton.prop('disabled', false);
 
       // Reload page
       location.reload();

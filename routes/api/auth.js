@@ -3,7 +3,6 @@ var User = keystone.list('User');
 
 // POST /api/signin
 exports.signin = function (req, res) {
-
   if (!keystone.security.csrf.validate(req)) {
     return res.status(401)
       .json({

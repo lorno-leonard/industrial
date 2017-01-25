@@ -1,4 +1,5 @@
 var keystone = require('keystone');
+var mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 var Types = keystone.Field.Types;
 
@@ -6,7 +7,9 @@ var Types = keystone.Field.Types;
  * User Model
  * ==========
  */
-var User = new keystone.List('User');
+var User = new keystone.List('User', {
+  nodelete: true,
+});
 
 User.add({
   name: { type: Types.Name, required: true, index: true },
@@ -20,6 +23,11 @@ User.add({
 // Provide access to Keystone
 User.schema.virtual('canAccessKeystone').get(function () {
   return this.isAdmin;
+});
+
+// Profile details on schema
+User.schema.add({
+  profile: { type: mongoose.Schema.Types.Mixed },
 });
 
 

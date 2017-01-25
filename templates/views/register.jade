@@ -1,0 +1,78 @@
+extends ../layouts/default
+
+block js
+  script(src='/js/industrial/scripts/register.js')
+
+block intro
+  h3 Register
+  .alert.alert-success.hide Thank you for registering. Please login.
+  form#ipce_register_form
+    .alert.alert-danger.hide
+    h5 Login Information
+    .row
+      .col-sm-6
+        .form-group
+          label Username <span class="text-danger">*</span>
+          input.form-control(type='text', name='username', required=true, autocomplete='off')
+      .col-sm-6
+        .form-group
+          label Email Address <span class="text-danger">*</span>
+          input.form-control(type='email', name='email', required=true, autocomplete='off')
+      .col-sm-6
+        .form-group
+          label Password <span class="text-danger">*</span>
+          input.form-control(type='password', name='password', required=true)
+      .col-sm-6
+        .form-group
+          label Confirm Password <span class="text-danger">*</span>
+          input.form-control(type='password', name='confirm_password', required=true)
+    br
+    h5 Contact Person
+    .row
+      .col-sm-6
+        .form-group
+          label First Name <span class="text-danger">*</span>
+          input.form-control(type='text', name='first_name', required=true, autocomplete='off')
+      .col-sm-6
+        .form-group
+          label Last Name <span class="text-danger">*</span>
+          input.form-control(type='text', name='last_name', required=true, autocomplete='off')
+      .col-sm-12
+        .form-group
+          label Company
+          input.form-control(type='text', name='company', autocomplete='off')
+      .col-sm-6
+        .form-group
+          label Telephone Number
+          input.form-control(type='text', name='telephone_no', autocomplete='off')
+      .col-sm-6
+        .form-group
+          label Cellphone Number
+          input.form-control(type='text', name='cellphone_no', autocomplete='off')
+      .col-sm-6
+        .form-group
+          label Country <span class="text-danger">*</span>
+          select.form-control(name='country', required=true)
+            option(value='') -- Select Country --
+            each row in countries
+              option(value=row.value, data-name=row.name)= row.name
+      .col-sm-6
+        .form-group
+          label State
+          select.form-control(name='state', disabled=true)
+            option(value='') -- Select State --
+      .col-sm-6
+        .form-group
+          label City
+          input.form-control(type='text', name='city', autocomplete='off')
+      .col-sm-6
+        .form-group
+          label Postal Code
+          input.form-control(type='text', name='postal', autocomplete='off')
+      .col-sm-12
+        .form-group
+          label Street Address
+          input.form-control(type='text', name='address', autocomplete='off')
+      .col-sm-12
+        .form-group
+          button.btn.btn-primary.pull-right Register
