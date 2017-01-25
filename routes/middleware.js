@@ -34,7 +34,8 @@ exports.initLocals = function (req, res, next) {
 
   res.locals.navRightLinks = [
     { label: 'Customer Service', key: 'service', href: '/service' },
-    { label: 'Login/Register', key: '', href: '#' },
+    { label: 'Register', key: 'register', href: '/register' },
+    { label: 'Signout', key: 'signout', href: '/signout' },
     { label: 'Contact Us', key: 'contact', href: '/contact' },
   ];
 
@@ -112,4 +113,12 @@ exports.requireUser = function (req, res, next) {
   } else {
     next();
   }
+};
+
+// Insert CSRF
+exports.insertCSRF = function (req, res, next) {
+  res.locals.csrf_token_key = keystone.security.csrf.TOKEN_KEY;
+  res.locals.csrf_token_value = keystone.security.csrf.getToken(req, res);
+  res.locals.csrf_query = '&' + keystone.security.csrf.TOKEN_KEY + '=' + keystone.security.csrf.getToken(req, res);
+  next();
 };

@@ -78,7 +78,12 @@ html
                   li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
               ul.nav.navbar-nav.navbar-right
                 each link in navRightLinks
-                  li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
+                  if user
+                    if link.key != 'register'
+                      li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
+                  else
+                    if link.key != 'signout'
+                      li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
                 //- if user
                 //-   if user.canAccessKeystone
                 //-     li: a(href='/keystone') Open Keystone
@@ -114,7 +119,7 @@ html
                 a(href='/manufacturers') View all Manufacturers
 
           //- Content
-          .col-md-6
+          div(class=user ? 'col-md-9' : 'col-md-6')
             .ipce_content
               //- NOTE:
               //- There is no .container wrapping class around body blocks to allow more flexibility in design.
@@ -130,15 +135,27 @@ html
               //- The content block should contain the body of your template's content
               block content
 
-            //- Pre-footer
-            .ipce_content_footer.text-center
-              p.text-ipce-red: strong Industrial Process Control &amp; Engineering Ltd &copy; 2017, All Rights Reserved
-              p London Office: <em><strong>71 - 75, Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM</strong></em>
-              p Derby Office: 31 Bemrose Road, Allenton, Derby, DE24 8LP, United Kingdom
-              p Registered in England and Wales | Company No. 10467995 | Tel: 00447872925763 | Fax: 01332117496 | Email: <a href="mailto:sales@industrialprocesscontoler.co.uk">sales@industrialprocesscontoler.co.uk</a>
-
           //- Login/Register side
-          .col-md-3: p
+          if !user
+            .col-md-3
+              p User Login
+              form#icpe_login_form(novalidate)
+                .alert.alert-danger.hide
+                input(type='hidden', name=csrf_token_key, value=csrf_token_value)
+                .form-group
+                  label Username/Email Address
+                  input.form-control(type='text', name='username', required=true, autocomplete='off')
+                .form-group
+                  label Password
+                  input.form-control(type='password', name='password', required=true)
+                button.btn.btn-primary.btn-block Sign In
+
+      //- Pre-footer
+      .ipce_content_footer.text-center
+        p.text-ipce-red: strong Industrial Process Control &amp; Engineering Ltd &copy; 2017, All Rights Reserved
+        p London Office: <em><strong>71 - 75, Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM</strong></em>
+        p Derby Office: 31 Bemrose Road, Allenton, Derby, DE24 8LP, United Kingdom
+        p Registered in England and Wales | Company No. 10467995 | Tel: 00447872925763 | Fax: 01332117496 | Email: <a href="mailto:sales@industrialprocesscontoler.co.uk">sales@industrialprocesscontoler.co.uk</a>
 
       //- PUSH
       #push
@@ -171,6 +188,8 @@ html
       script(src='/keystone/js/content/editor.js')
 
     //- Add scripts that are globally required by your site here.
+    script(src='/js/industrial/lib/lodash-4.17.4.min.js')
+    script(src='/js/industrial/script.js')
 
     //- Include template-specific javascript files by extending the js block
     block js
