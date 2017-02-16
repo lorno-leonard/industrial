@@ -23,6 +23,11 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'User',
+
+	'wysiwyg additional plugins': 'paste',
+	'wysiwyg additional options': { // eslint-disable-line
+    'paste_data_images': true,
+  },
 });
 
 // Load your project's Models
