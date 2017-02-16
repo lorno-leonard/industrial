@@ -2,7 +2,14 @@ extends ../layouts/default
 
 block intro
   h3 Customer Service
+  div.slick
+    div: img.img-responsive(src='/images/banner/banner-cs-01.jpg')
+    div: img.img-responsive(src='/images/banner/banner-cs-02.jpg')
   ul
     li: a(href='/service/payments') Payment Methods &amp; Credit Accounts
     li: a(href='/service/shipping') Shipping
     li: a(href='/service/warranty') Warranty and Return Policy
+
+block js
+  script(src='/js/industrial/lib/slick-1.6.0.min.js')
+  script(src='/js/industrial/scripts/service.js')
