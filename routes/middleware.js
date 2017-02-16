@@ -87,7 +87,7 @@ exports.initLocals = function (req, res, next) {
 
   // User
   res.locals.user = req.user;
-  console.log(req.user);
+
   // Check if there's a user
   if (req.user) {
     res.locals.navAccountLinks = [

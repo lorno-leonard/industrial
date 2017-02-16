@@ -15,6 +15,18 @@ ProductCategory.add({
   name: { type: Types.Text, required: true },
   top: { type: Types.Boolean, default: false },
   content: { type: Types.Html, wysiwyg: true, height: 400 },
+  image: {
+    type: Types.LocalFile,
+    dest: './public/uploads/category/',
+    prefix: '/category/',
+    allowedTypes: [
+      'image/jpeg',
+      'image/png',
+    ],
+    filename: function (item, file) {
+      return item.id + '.' + file.extension;
+    },
+  },
 });
 
 ProductCategory.defaultSort = 'name';

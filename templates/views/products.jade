@@ -7,4 +7,10 @@ block intro
       .col-md-6 No Product Category found
     else
       each row in data
-        .col-md-6: a.icpe_list_anchor(href='/products/category/' + row.slug)= row.name
+        .col-sm-6
+          a.icpe_list_anchor(href='/products/category/' + row.slug)
+            span= row.name
+            if !row.image.filename
+              img.img-thumbnail(src='/images/no-image.png', style='margin: 0 auto 20px; display: block; max-height: 200px;')
+            else
+              img.img-thumbnail(src='/uploads/category/#{row.image.filename}', style='margin: 0 auto 20px; display: block; max-height: 200px;')

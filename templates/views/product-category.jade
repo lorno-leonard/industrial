@@ -7,7 +7,11 @@ block intro
     h3.text-danger Invalid Product Category
   else
     h3= data.name
+    if !data.image.filename
+      img(src='/images/no-image.png', style='margin: 0 auto 20px; display: block;')
+    else
+      img(src='/uploads/category/#{data.image.filename}', style='max-width: 300px; margin: 0 auto 20px; display: block;')
     if !data.content
-      span No description available
+      p No description available
     else
       div!= data.content
