@@ -59,6 +59,9 @@ exports = module.exports = function (app) {
   app.get('/policy', routes.views.policy);
   app.all('/signout', routes.views.signout);
 
+  // Accounts
+  app.get('/account', routes.views.account.index);
+
   // API
   app.post('/api/signin', routes.api.auth.signin);
   app.get('/api/register/states/:country', routes.api.register.states);

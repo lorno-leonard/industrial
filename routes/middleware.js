@@ -36,6 +36,8 @@ exports.initLocals = function (req, res, next) {
     { label: 'Customer Service', key: 'service', href: '/service' },
     { label: 'Contact Us', key: 'contact', href: '/contact' },
     { label: 'Register', key: 'register', href: '/register' },
+    { label: 'Account', key: 'account', href: '/account' },
+    { label: 'Admin', key: 'admin', href: '/keystone' },
     { label: 'Signout', key: 'signout', href: '/signout' },
   ];
 
@@ -48,9 +50,6 @@ exports.initLocals = function (req, res, next) {
     { label: 'Privacy Policy', key: 'policy', href: '/policy' },
     { label: 'Contact Us', key: 'contact', href: '/contact' },
   ];
-
-  // User
-  res.locals.user = req.user;
 
   async.series([
     function (callback) {
@@ -85,6 +84,21 @@ exports.initLocals = function (req, res, next) {
     }
     next();
   });
+
+  // User
+  res.locals.user = req.user;
+  console.log(req.user);
+  // Check if there's a user
+  if (req.user) {
+    res.locals.navAccountLinks = [
+      { label: 'Account Information', key: 'account', href: '/account' },
+      { label: 'Inquiries', key: 'account-inquiries', href: '/account/inquiries' },
+      { label: 'Quotations', key: 'account-quotations', href: '/account/quotations' },
+      { label: 'Orders', key: 'account-orders', href: '/account/orders' },
+      { label: 'Invoices', key: 'account-invoices', href: '/account/invoices' },
+      { label: 'My Messages', key: 'account-messages', href: '/account/messages' },
+    ];
+  }
 };
 
 

@@ -5940,6 +5940,9 @@ ol.icpe_disclaimer {
     color: #333;
     text-decoration: underline; }
 
+.icpe_list li.active > a {
+  font-weight: bold; }
+
 .ipce_content_footer {
   margin-top: 30px;
   font-size: 0.85em; }

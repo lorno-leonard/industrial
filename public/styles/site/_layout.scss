@@ -173,15 +173,19 @@ $ipce-color-red: #dc1433;
 }
 
 .icpe_list {
- li > a,
- a.icpe_list_anchor {
-	 color: #333;
+	li > a,
+	a.icpe_list_anchor {
+		color: #333;
 
-	 &:hover {
-		 color: #333;
-		 text-decoration: underline;
-	 }
- }
+		&:hover {
+			color: #333;
+			text-decoration: underline;
+		}
+	}
+
+	li.active > a {
+		font-weight: bold;
+	}
 }
 
 .ipce_content_footer {

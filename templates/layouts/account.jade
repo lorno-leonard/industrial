@@ -90,7 +90,7 @@ html
                       if link.key != 'account' && link.key != 'admin'
                         li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
                   else
-                    if link.key != 'signout' && link.key != 'account' && link.key != 'admin'
+                    if link.key != 'signout'
                       li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
                 //- if user
                 //-   if user.canAccessKeystone
@@ -106,29 +106,20 @@ html
         .row
           //- Product/Manufacturer side
           .col-md-3
-            h4 Popular Product Categories
-            ul.icpe_list.list-unstyled
-              if !productCategories
-                li No Category found
-              else
-                each row in productCategories
-                  li: a(href='/products/category/' + row.slug)= row.name
-                br
-                a(href='/products') View all Product Categories
-            hr
-            h4 Top Manufacturers
-            ul.icpe_list.list-unstyled
-              if !manufacturers
-                li No Manufacturer found
-              else
-                each row in manufacturers
-                  li: a(href='/manufacturers/' + row.slug)= row.name
-                br
-                a(href='/manufacturers') View all Manufacturers
+            .well
+              ul.fa-ul.icpe_list.list-unstyled
+                each link in navAccountLinks
+                  li(class=(section == link.key ? 'active' : null))
+                    i.fa-li.fa.fa-long-arrow-right
+                    a(href=link.href)= link.label
+            p.lead Making a Purchase
+            .well
+              p To make a purchase, just browse our Catalogue, and click on any item that you wish to buy. An inquiry form will pop up, which you need to fill in and submit. We will endeavor to get back to you as soon as possible with a quotation. If you wish to proceed, click on "Order" and you will be asked a few details that we need to be able to satisfy the purchase.
+              p We accept major credit cards including: Visa, Mastercard, Maestro, Solo, American Express, Visa, Visa Debit, and Visa Electron through PayPal. We must receive full payment before delivery unless we have agreed otherwise on advance writing.
 
           //- Content
           //- div(class=user ? 'col-md-9' : 'col-md-6')
-          .col-md-6
+          .col-md-9
             .ipce_content
               //- NOTE:
               //- There is no .container wrapping class around body blocks to allow more flexibility in design.
@@ -143,24 +134,6 @@ html
 
               //- The content block should contain the body of your template's content
               block content
-
-          //- Login/Register side
-          if !user
-            .col-md-3
-              p User Login
-              form#icpe_login_form(novalidate)
-                .alert.alert-danger.hide
-                input(type='hidden', name=csrf_token_key, value=csrf_token_value)
-                .form-group
-                  label Username/Email Address
-                  input.form-control(type='text', name='username', required=true, autocomplete='off')
-                .form-group
-                  label Password
-                  input.form-control(type='password', name='password', required=true)
-                .form-group
-                  button.btn.btn-primary.pull-right Sign In
-          else
-            .col-md-3: p
 
       //- Pre-footer
       .ipce_content_footer.text-center
