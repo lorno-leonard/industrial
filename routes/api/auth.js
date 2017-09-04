@@ -27,7 +27,7 @@ exports.signin = function (req, res) {
         return res.status(401)
           .json({
             success: false,
-            message: (err && err.message ? err.message : false) || 'Sorry, there was an issue signing you in. Please try again.',
+            message: (err && err.message ? err.message : false) || 'Username/Email Address or Password is invalid.',
           });
       }
 
@@ -47,7 +47,7 @@ exports.signin = function (req, res) {
           return res.status(401)
             .json({
               success: false,
-              message: (err && err.message ? err.message : false) || 'Sorry, there was an issue signing you in. Please try again.',
+              message: (err && err.message ? err.message : false) || 'Username/Email Address or Password is invalid.',
             });
         });
     });
