@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 /**
  * This script automatically creates a default Admin user when an
  * empty database is used for the first time. You can use this
@@ -8,9 +10,14 @@
  */
 
 exports.create = {
-	User: [
-		{ 'name.first': 'Admin', 'name.last': 'User', 'email': 'online.lorno@industrialprocessescontrol.co.uk', 'password': 'admin', 'isAdmin': true },
-	],
+	User: [{
+		'name.first': process.env.ADMIN_FIRSTNAME,
+		'name.last': process.env.ADMIN_LASTNAME,
+		'email': process.env.ADMIN_EMAIL,
+		'username': process.env.ADMIN_USERNAME,
+		'password': process.env.ADMIN_PASSWORD,
+		'isAdmin': true,
+	}],
 };
 
 /*
