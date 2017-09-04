@@ -23,11 +23,12 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'User',
+	'cookie secret': process.env.COOKIE_SECRET,
 
 	'wysiwyg additional plugins': 'paste',
 	'wysiwyg additional options': { // eslint-disable-line
-    'paste_data_images': true,
-  },
+		'paste_data_images': true,
+	},
 });
 
 // Load your project's Models
@@ -55,6 +56,8 @@ keystone.set('nav', {
 	users: 'users',
 });
 
-// Start Keystone to connect to your database and initialise the web server
+// Cloudinary config
+keystone.set('cloudinary config', process.env.CLOUDINARY_URL);
 
+// Start Keystone to connect to your database and initialise the web server
 keystone.start();
